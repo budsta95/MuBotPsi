@@ -59,3 +59,5 @@ typings/
 credentials.json
 config.json
 .replit
+package-lock.json
+package.json

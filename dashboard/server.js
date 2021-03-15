@@ -27,7 +27,7 @@ module.exports = async client => {
   });
   
   app.listen(3000, function () {
-    wakeUpDyno(`https://MuBotPsi.MuBotPsi.repl.co`);
+    wakeUpDyno(`https://MuBotPsi.mubetapsi.repl.co`);
     console.log(chalk.cyan(`>> Dashboard is online: port 3000`));
   });
 };

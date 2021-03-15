@@ -13,7 +13,7 @@ exports.run = async (client, message, args, level) => {
     const embed = new MessageEmbed()
             .setColor('#0099ff')
             .setTitle('= Command List =')
-            .setDescription(`All commands available at https://MuBotPsi.MuBotPsi.repl.co/`)
+            .setDescription(`All commands available at https://MuBotPsi.mubetapsi.repl.co/`)
             .setFooter(`[Use ${message.settings.prefix}help <commandname> for details]`);
     await client.categories.map((commands, category) => {
       let myCommands = client.commands.filter(cmd => commands.includes(cmd.help.name));

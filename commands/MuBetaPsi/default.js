@@ -17,8 +17,8 @@ exports.conf = {
 };
 
 exports.help = {
-  name: "sigma default",
-  category: "Sigma",
-  description: "Default Command for Sigma Module",
-  usage: "sigma"
+  name: "mbp default",
+  category: "MuBetaPsi",
+  description: "Default Command for MuBetaPsi Module",
+  usage: "mbp"
 };
