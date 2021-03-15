@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Embeded links meta tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mu Bot Psi"/>
+  <meta property="og:description" content="Mu Beta Psi Discord Bot"/>
+  <meta property="og:image" content="">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/darkly/bootstrap.min.css" integrity="sha384-nNK9n28pDUDDgIiIqZ/MiyO3F4/9vsMtReZK39klb/MtkZI3/LtjSjlmyVPS3KdN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js" integrity="sha256-zG8v+NWiZxmjNi+CvUYnZwKtHzFtdO8cAKUIdB8+U9I=" crossorigin="anonymous"></script>
+  <script src="https://cdn.datatables.net/v/bs4/dt-1.10.16/cr-1.4.1/r-2.2.0/datatables.min.js"></script>
+  <link rel='icon' href=''>
+  <title>
+    Mu Beta Psi
+  </title>
+</head>
+
+<body>
+  <a name="top"></a>
+  
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Mu Beta Psi</a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse collapse" id="navbarColor01" style="">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="https://mubetapsi.org/">Mu Beta Psi Website</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+  
+<% const help = {};
+bot.categories.map((commands, category) => {
+  let myCommands = bot.commands.filter(cmd => commands.includes(cmd.help.name));
+  const sorted = myCommands.array().sort((p, c) => p.help.name > c.help.name ? 1 : -1 );
+  help[category] = sorted;
+});
+%>
+</br></br>
+<div class="container">
+  <h1>Commands</h1>
+  <% for (const category in help) { %>
+    <br>
+    <h3><%= category %></h3>
+    <br>
+    <div class="card-columns">
+      <% for (const command of help[category]) { %>
+        <div class="card">
+          <h3 class="card-header"><%= command.help.name %></h3>
+          <div class="card-body" style="height: 100px;">
+            <p class="card-text"><%= command.help.description %></p>
+          </div>
+          <div class="card-footer">Permission Level: <%= command.conf.permLevel %><br /><a href="#" data-toggle="modal" data-target="#<%= `${command.help.name}` %>Modal">Click for more...</a></div>
+        </div>
+        <div id="<%= `${command.help.name}` %>Modal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header btn-info disabled">
+                <h4 class="modal-title"><%= command.help.name %></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                <p>Usage Example: <%= command.help.usage %></p>
+                <p>Command Aliases: <%= `${command.conf.aliases.join(', ')}` %></p>
+              </div>
+              <div class="modal-footer"><button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button></div>
+            </div>
+          </div>
+        </div>
+      <% } %>
+    </div>
+  <% } %>
+  <footer id="footer">
+    <div class="row">
+      <div class="col-lg-12">
+        <a href="#top" class="float-lg-right">Back to Top</a>
+        <p>Developers: Buddy Cross </br>
+        Made Using: <a href="https://anidiots.guide">An Idiot's Guide</a>, <a href="https://getbootstrap.com">Bootstrap</a>, <a href="https://fontawesome.com">Font Awesome</a>, <a href="https://bootswatch.com/">Bootswatch's Darkly</a></p>
+      </div>
+    </div>
+  </footer>
+</div>
+  </body>
+</html>
